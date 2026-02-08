@@ -1,12 +1,14 @@
 import express from "express";
+import portfolioRouter from "./routes/portfolio.routes.js";
 
 const app = express();
 const port = 3000;
 
-// Basic test route
-app.get("/", (req, res) => {
-  res.send("Portfolio API is running");
-});
+// Middleware
+app.use(express.json());
+
+// Mount routes
+app.use("/api", portfolioRouter);
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
